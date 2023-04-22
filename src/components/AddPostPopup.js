@@ -58,4 +58,4 @@ const AddPostPopup = (props) => {
       ) : ""
 }
 
-export default AddPostPopup
+export default AddPostPopup;
