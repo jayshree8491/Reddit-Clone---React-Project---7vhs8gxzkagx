@@ -76,4 +76,4 @@ const PostItem = ({postText,upvote,downvote,userVoted,postId}) => {
   )
 }
 
-export default PostItem
+export default PostItem;
