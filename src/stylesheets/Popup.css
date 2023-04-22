@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Login Popup css */
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(173, 187, 174, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-inner{
+    position: relative;
+    padding: 10px;
+    width: 100%;
+    height: 45%;
+    max-width: 320px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+.popup-inner form{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0px;
+}
+.popup-inner h3{
+    margin: 0;
+    padding-bottom: 15px;
+    font-size: 2em;
+}
+
+.popup-inner input{
+    margin: 10px;
+    padding: 5px;
+    width: 80%;
+    height: 20%;
+    border: 1px solid rgb(173, 169, 169);
+    border-radius: 5px;
+}
+
+.popup-inner .btns{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-inner form button{
+    margin: 10px;
+    width: 83%;
+    padding: 5px;
+}
+.popup-inner button{
+    margin: 10px;
+    width: 83%;
+    padding: 5px;
+    margin-top: 0;
+}
+
+
+
+
+/* add post popup css */
+
+.addPostPopup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(173, 187, 174, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addPostPopup-inner{
+    position: relative;
+    padding: 5px;
+    width: 100%;
+    height: 25%;
+    max-width: 280px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+}
+
+.addPostPopup-inner .title{
+    height: 5vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.addPostPopup-inner .title .close-btn{
+    border: none;
+    /* background-color: #fff; */
+    height: 2em;
+}
+.addPostPopup-inner .inputText{
+    width: 98%;
+    height: 60%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+form{
+    height: 70%;
+    /* background-color: aqua; */
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.addPostPopup-inner .btns{
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+.addPostPopup-inner button{
+    margin-left: 5px;
+}

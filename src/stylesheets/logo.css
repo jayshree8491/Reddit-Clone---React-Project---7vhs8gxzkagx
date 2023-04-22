@@ -1,0 +1,10 @@
+#reddit-logo {
+    display:  flex;
+    align-items: center;
+    justify-content: left;
+}
+
+#reddit-logo > img {
+    width: 100px;
+    margin-left: 20px;
+}
