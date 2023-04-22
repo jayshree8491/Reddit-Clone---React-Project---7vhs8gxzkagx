@@ -19,4 +19,4 @@ class postDataService{
     }
 }
 
-export default new postDataService()
+export default new postDataService();

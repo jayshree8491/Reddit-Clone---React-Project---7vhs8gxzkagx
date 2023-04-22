@@ -12,7 +12,7 @@ const PostItem = ({postText,upvote,downvote,userVoted,postId}) => {
   // console.log(postId)
   const isLoggedin=()=>{
     if(localStorage.getItem('userName')){
-      return true
+      return true;
     }
     return false;
   }
