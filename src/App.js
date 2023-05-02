@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Posts/>}/>
         <Route path='/login' element={<LoginPopup trigger={loginPopup} setLoginTrigger={setLoginPopup}/>}/>
-        <Route path='/addpost' element={<AddPostPopup trigger={addpostPopup} setPostTrigger={setAddPostPopup}></AddPostPopup>}/>
+       <Route path='/addpost' element={<AddPostPopup trigger={addpostPopup} setPostTrigger={setAddPostPopup}/>}/>
       </Routes>
     
     </div>
