@@ -1,17 +1,20 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCWXlk4OUQWLxz0V2d1vCGcAGfH6rf4sGA",
-  authDomain: "reddit-clone-8437c.firebaseapp.com",
-  projectId: "reddit-clone-8437c",
-  storageBucket: "reddit-clone-8437c.appspot.com",
-  messagingSenderId: "553356355136",
-  appId: "1:553356355136:web:7340058e35111cdec861a5",
-  measurementId: "G-CQ4V379V9G",
+  apiKey: "AIzaSyCarbhEEpYnWIGy7so_FDJagUHJqiQvAPE",
+  authDomain: "reddit-fd6e2.firebaseapp.com",
+  projectId: "reddit-fd6e2",
+  storageBucket: "reddit-fd6e2.appspot.com",
+  messagingSenderId: "967512741346",
+  appId: "1:967512741346:web:8e6cdeb58b239dd53855bb",
+  measurementId: "G-XHZRJSS1TR"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-export const db = getFirestore(app);
+const analytics = getAnalytics(app);
