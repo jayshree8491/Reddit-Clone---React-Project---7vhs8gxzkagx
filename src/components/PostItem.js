@@ -4,59 +4,70 @@ import postDataService from '../services/post.services'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const PostItem = ({postText,upvote,downvote,userVoted,postId}) => {
-  const user=localStorage.getItem('userName')
-  const [upVote,setUpVote]=useState(upvote)
-  const [downVote,setDownVote]=useState(downvote)
+const PostItem = ({ postText, upvote, downvote, postId }) => {
+  const user = localStorage.getItem("userName");
+  const [upVote, setUpVote] = useState(upvote);
+  const [downVote, setDownVote] = useState(downvote);
+  const [userVoted, setUserVoted] = useState([]);
+
+  useEffect(() => {
+    setUserVoted(userVoted);
+  }, [userVoted]);
+
+  // ...
+};
+
 
   // console.log(postId)
+  
+  
+  
+  
   const isLoggedin=()=>{
     if(localStorage.getItem('userName')){
       return true;
     }
     return false;
   }
-  const addUpVote=async(e)=>{
-    if(isLoggedin() && !userVoted.includes(user)){
-      setUpVote(upVote+1);
-      console.log(upVote+1)
-      userVoted.push(user)
-      const updatedPost={
-        post:postText,
-        upvote:upVote+1,
-        downvote:downVote,
-        uservoted:userVoted
-      }
-      try{
-        await postDataService.updatePost(postId,updatedPost)
-      }catch(err){
-        toast(err.message)
-      }
+  const addUpVote = async (e) => {
+  if (isLoggedin() && !userVoted.includes(user)) {
+    setUpVote((prevUpVote) => prevUpVote + 1);
+    setUserVoted((prevUserVoted) => [...prevUserVoted, user]);
+    const updatedPost = {
+      post: postText,
+      upvote: upVote + 1,
+      downvote: downVote,
+      uservoted: [...userVoted, user],
+    };
+    try {
+      await postDataService.updatePost(postId, updatedPost);
+    } catch (err) {
+      toast(err.message);
     }
-    else if (!isLoggedin()){
-      toast("Please login 🙏 to Upvote")
-    }
+  } else if (!isLoggedin()) {
+    toast("Please login 🙏 to Upvote");
   }
-  const addDownVote=async(e)=>{
-    if(isLoggedin() && !userVoted.includes(user)){
-      setDownVote(downVote+1);
-      userVoted.push(user)
-      const updatedPost={
-        post:postText,
-        upvote:upVote,
-        downvote:downVote+1,
-        uservoted:userVoted
-      }
-      try{
-        await postDataService.updatePost(postId,updatedPost)
-      }catch(err){
-        toast(err.message)
-      }
+};
+
+const addDownVote = async (e) => {
+  if (isLoggedin() && !userVoted.includes(user)) {
+    setDownVote((prevDownVote) => prevDownVote + 1);
+    setUserVoted((prevUserVoted) => [...prevUserVoted, user]);
+    const updatedPost = {
+      post: postText,
+      upvote: upVote,
+      downvote: downVote + 1,
+      uservoted: [...userVoted, user],
+    };
+    try {
+      await postDataService.updatePost(postId, updatedPost);
+    } catch (err) {
+      toast(err.message);
     }
-    else if (!isLoggedin()) {
-      toast("Please login 🙏 to Downvote")
-    }
+  } else if (!isLoggedin()) {
+    toast("Please login 🙏 to Downvote");
   }
+};
 
   return (
     <>
