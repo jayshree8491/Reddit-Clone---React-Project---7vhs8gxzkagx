@@ -10,12 +10,6 @@ const PostItem = ({ postText, upvote, downvote, postId }) => {
   const [downVote, setDownVote] = useState(downvote);
   const [userVoted, setUserVoted] = useState([]);
 
-  useEffect(() => {
-    setUserVoted(userVoted);
-  }, [userVoted]);
-
-  // ...
-};
 
 
   // console.log(postId)
