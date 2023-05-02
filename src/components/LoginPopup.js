@@ -13,7 +13,7 @@ const LoginPopup = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     localStorage.setItem("userName", name)
-    toast("Login successfull")
+    toast("Successfully Logged in!")
     navigate('/')
   }
   return (props.trigger) ? (
