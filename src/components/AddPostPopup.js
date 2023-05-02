@@ -1,61 +1,93 @@
-import React, { useState } from 'react'
-import postDataService from '../services/post.services'
+import React, { useState } from 'react';
+import postDataService from '../services/post.service';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
+const AddPostPopup = ({ setPostTrigger }) => {
+  const navigate = useNavigate();
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
-const AddPostPopup = (props) => {
-    const navigate=useNavigate()
-    const [post,setPost]=useState("")
-    
-    const handleSubmit=async (e)=>{
-        e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        if(post===""){
-            toast("Please add a post")
-            return;
-        }
-        const newPost={
-            post,
-            upvote:0,
-            downvote:0,
-            uservoted:[]
-        }
-        try{
-            await postDataService.addPost(newPost)
-            toast("Post added successfully")
-        }catch(err){
-            toast(err.message)
-        }
-        setPost("")
-    }
-    const close=()=>{
-        props.setPostTrigger(false)
-        navigate('/')
+    if (title === '') {
+      toast('Please add a title');
+      return;
     }
 
-    return (props.trigger) ? (
-        <div className='addPostPopup'>
-            <div className='addPostPopup-inner'>
-                <div className='title'>
-                    <h4>Add new post</h4>
-                    {/* <button className='close-btn' onClick={close}>X</button> */}
-                </div>
-                <form onSubmit={handleSubmit}>
-                    <p>Post Title</p>
-                    <input onChange={(e)=>setPost(e.target.value)} className='inputText' type='text' name='post' value={post} />
-                    <div className='btns'>
-                        <button 
-                        onClick={close}>Close</button>
-                        <button type='Submit'>Save</button>
-                    </div>
-                </form>
-                {props.children}
-            </div>
-            <ToastContainer />
+    const newPost = {
+      title,
+      content,
+      upvotes: 0,
+      downvotes: 0,
+      userVotes: [],
+      createdAt: new Date(),
+    };
+
+    try {
+      await postDataService.addPost(newPost);
+      toast('Post added successfully');
+    } catch (err) {
+      toast(err.message);
+    }
+
+    setTitle('');
+    setContent('');
+    setPostTrigger(false);
+    navigate('/');
+  };
+
+  const handleCancel = () => {
+    setPostTrigger(false);
+  };
+
+  return (
+    <div className='addPostPopup'>
+      <div className='addPostPopup-inner'>
+        <div className='title'>
+          <h4>Add new post</h4>
+          <button className='close-btn' onClick={handleCancel}>
+            X
+          </button>
         </div>
-      ) : ""
-}
+        <form onSubmit={handleSubmit}>
+          <div className='form-group'>
+            <label htmlFor='title'>Title</label>
+            <input
+              type='text'
+              id='title'
+              name='title'
+              className='form-control'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor='content'>Content</label>
+            <textarea
+              id='content'
+              name='content'
+              className='form-control'
+              rows='5'
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            ></textarea>
+          </div>
+          <div className='btns'>
+            <button className='btn btn-secondary' onClick={handleCancel}>
+              Cancel
+            </button>
+            <button type='submit' className='btn btn-primary'>
+              Add Post
+            </button>
+          </div>
+        </form>
+      </div>
+      <ToastContainer />
+    </div>
+  );
+};
 
 export default AddPostPopup;
