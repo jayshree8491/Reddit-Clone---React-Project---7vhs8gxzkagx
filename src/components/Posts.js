@@ -8,12 +8,15 @@ const Posts = () => {
     useEffect(()=>{
         getPosts()
     },[])
-    const getPosts=async ()=>{
-        const data=await postDataService.getAllPosts()
-        // console.log(data.docs)
-        setPosts(data.docs.map((doc)=>({...doc.data(),id:doc.id})))
-        // console.log(posts[0].id)
-    }
+   
+    
+    const getPosts = async () => {
+  const data = await postDataService.getAllPosts();
+  setPosts(prevPosts => {
+    return data.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+  });
+};
+
   return (
     <div className="post-container">
       {/* <pre>{JSON.stringify(posts,undefined,1)}</pre> */}
