@@ -35,7 +35,7 @@ const PostItem = ({ postText, upvote, downvote, postId }) => {
     setUserVoted((prevUserVoted) => [...prevUserVoted, user]);
     const updatedPost = {
       post: postText,
-      upvote: upVote + 1,
+      upvote: prevUpVote + 1, // use the previous state value
       downvote: downVote,
       uservoted: [...userVoted, user],
     };
@@ -56,7 +56,7 @@ const addDownVote = async (e) => {
     const updatedPost = {
       post: postText,
       upvote: upVote,
-      downvote: downVote + 1,
+      downvote: prevDownVote + 1, // use the previous state value
       uservoted: [...userVoted, user],
     };
     try {
