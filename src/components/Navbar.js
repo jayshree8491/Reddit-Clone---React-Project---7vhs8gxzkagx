@@ -25,7 +25,7 @@ const Navbar = (props) => {
   const logout=()=>{
     localStorage.removeItem('userName')
     toast('Logged out successfully')
-    navigate('/')
+    navigate('/login')
   }
   return (
     <>
