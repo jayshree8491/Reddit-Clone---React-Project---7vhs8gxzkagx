@@ -16,7 +16,7 @@ class postDataService{
     }
 
     getAllPosts=()=>{
-        return getDocs(postCollectiopnRef)
+        return getDocs(postCollectionRef)
     }
 }
 
