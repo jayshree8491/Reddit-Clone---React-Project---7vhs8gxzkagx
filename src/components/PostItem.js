@@ -18,7 +18,16 @@ const PostItem = (props) => {
 
   // console.log(postId)
   
-  
+  const handleUpVote = () => {
+    setPrevUpVote(prevUpVote + 1);
+    // ...
+  }
+
+  const handleDownVote = () => {
+    setPrevDownVote(prevDownVote + 1);
+    // ...
+  }
+
   
   
   const isLoggedin=()=>{
