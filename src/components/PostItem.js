@@ -4,8 +4,12 @@ import postDataService from '../services/post.services'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const PostItem = ({ postText, upvote, downvote, postId }) => {
-  const user = localStorage.getItem("userName");
+const PostItem = (props) => {
+  const { id, title, body, upVotes, downVotes } = props.post;
+  const { handleUpVote, handleDownVote } = props;
+
+  let [prevUpVote, setPrevUpVote] = useState(upVotes);
+  let [prevDownVote, setPrevDownVote] = useState(downVotes);
   const [upVote, setUpVote] = useState(upvote);
   const [downVote, setDownVote] = useState(downvote);
   const [userVoted, setUserVoted] = useState([]);
