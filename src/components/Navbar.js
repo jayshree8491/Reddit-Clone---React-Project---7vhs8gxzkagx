@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../stylesheets/logo.css"
 import logo from "./logo.png"
-
+import LoginPopup from './components/LoginPopup';
 
 function Navbar(props) {
   const navigate = useNavigate();
