@@ -16,14 +16,14 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
   };
-  
+
   const [addpostPopup,setAddPostPopup]=useState(false)
   const [loginPopup,setLoginPopup]=useState(false)
-  
+
   return (
     <>
       <div className="App">
-        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} setPostTrigger={setAddPostPopup} setLoginTrigger={setLoginPopup} />
+        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} setPostTrigger={setAddPostPopup} setLoginTrigger={setLoginPopup}/>
       </div>
       <div className='routes'>
         <Routes>
