@@ -46,8 +46,9 @@ const AddPostPopup = (props) => {
                     <p>Post Title</p>
                     <input onChange={(e)=>setPost(e.target.value)} className='inputText' type='text' name='post' value={post} />
                     <div className='btns'>
-                     <button onClick={close}>Close</button>
-<button type='submit'>Save</button>
+                        <button 
+                        onClick={close}>Close</button>
+                        <button type='Submit'>Save</button>
                     </div>
                 </form>
                 {props.children}
