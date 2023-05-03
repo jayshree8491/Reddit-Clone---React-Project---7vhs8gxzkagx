@@ -19,6 +19,16 @@ Reddit Clone is done with features like Reddit.
 
 reddit-clone-by-vivek.netlify.app
 
+## SCREENSHOTS FROMS THE APP
+
+![image](https://user-images.githubusercontent.com/119621789/235937439-c7ff490c-b151-4c4a-88b6-3a987c6aa699.png)
+
+![image](https://user-images.githubusercontent.com/119621789/235937585-250512ad-03bf-4870-b172-80f6b33df76c.png)
+
+![image](https://user-images.githubusercontent.com/119621789/235937679-995860e0-879e-4eeb-bd43-375ff68380aa.png)
+
+
+
 
 ##  🖥️ Tech Stack
 
