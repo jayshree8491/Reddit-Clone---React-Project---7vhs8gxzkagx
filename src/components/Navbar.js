@@ -7,13 +7,13 @@ import logo from "./logo.png"
 
 
 const Navbar = (props) => {
-  const navigate=useNavigate()
-  const isLoggedIn=()=>{
-    if(localStorage.getItem('userName')){
-      return true;
-    }
-    return false;
-  }
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('userName');
+    props.handleLogout();
+    navigate('/login');
+  };
   const addPost=()=>{
     props.setPostTrigger(true)
     navigate('/addpost')
@@ -36,6 +36,17 @@ const Navbar = (props) => {
           {!isLoggedIn() && <button onClick={login}>Login</button>}
           {isLoggedIn() && <button onClick={logout}>Logout</button>}
         </span>
+         <nav>
+      <Link to="/">Home</Link>
+      {props.isLoggedIn ? (
+        <>
+          <button onClick={handleLogout}>Logout</button>
+          <Link to="/addpost">Add Post</Link>
+        </>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
+    </nav>
     </div>
     <ToastContainer/>
     </>
