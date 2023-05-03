@@ -22,7 +22,7 @@ const LoginPopup = (props) => {
         <form onSubmit={handleSubmit}>
           <h3>Login</h3>
           <input onChange={(e) => setName(e.target.value)} placeholder='Username' name='name' value={name} required />
-          <input onChange={(e) => setPassword(e.target.value)} placeholder='Password' name='password' value={password} required />
+          <input onChange={(e) => setPassword(e.target.value)} placeholder='Password' name='password' type='password' value={password} required />
           <div className='btns'>
             <button type='Submit'>Login</button>
             {/* <button>Back</button> */}
