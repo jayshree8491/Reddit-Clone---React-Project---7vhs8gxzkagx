@@ -24,6 +24,8 @@ function Navbar(props) {
     navigate("/login");
   };
 
+  const { isLoggedIn } = props;
+
   return (
     <>
       <div className="nav">
@@ -31,7 +33,7 @@ function Navbar(props) {
           <img src={logo} alt="Logo" />
         </span>
         <span id="login">
-          {props.isLoggedIn ? (
+          {isLoggedIn ? (
             <>
               <button onClick={addPost}>Add post</button>
               <button onClick={logout}>Logout</button>
@@ -45,4 +47,5 @@ function Navbar(props) {
     </>
   );
 }
+
 export default Navbar;
