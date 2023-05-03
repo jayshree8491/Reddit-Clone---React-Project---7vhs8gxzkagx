@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import React from 'react'
+import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
 import "../stylesheets/logo.css"
 import logo from "./logo.png"
 
@@ -11,20 +10,17 @@ function Navbar(props) {
   const navigate = useNavigate();
 
   const addPost = () => {
-   props.setPostTrigger(true);
-};
-
-  const login = () => {
-   props.setLoginTrigger(true);
-};
-
-  const logout = () => {
-    localStorage.removeItem("userName");
-    toast("Logged out successfully");
-    navigate("/login");
+    props.setPostTrigger(true);
   };
 
-  const { isLoggedIn } = props;
+  const login = () => {
+    props.setLoginTrigger(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("userName");
+    props.handleLogout();
+  };
 
   return (
     <>
@@ -33,10 +29,10 @@ function Navbar(props) {
           <img src={logo} alt="Logo" />
         </span>
         <span id="login">
-          {isLoggedIn ? (
+          {props.isLoggedIn ? (
             <>
               <button onClick={addPost}>Add post</button>
-              <button onClick={logout}>Logout</button>
+              <button onClick={handleLogout}>Logout</button>
             </>
           ) : (
             <button onClick={login}>Login</button>
