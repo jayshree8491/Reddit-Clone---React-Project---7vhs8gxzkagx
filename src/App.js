@@ -5,10 +5,14 @@ import { useState } from 'react'
 import LoginPopup from './components/LoginPopup';
 import Posts from './components/Posts';
 import { Route, Routes } from 'react-router-dom';
-
+function handleLogin() {
+  // Your login logic goes here
+  console.log('User logged in');
+}
 function App() {
   const [addpostPopup,setAddPostPopup]=useState(false)
   const [loginPopup,setLoginPopup]=useState(false)
+
   return (
     <>
     <div className="App">
