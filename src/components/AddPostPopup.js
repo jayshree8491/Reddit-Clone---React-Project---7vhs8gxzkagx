@@ -48,7 +48,7 @@ const AddPostPopup = (props) => {
                     <div className='btns'>
                         <button 
                         onClick={close}>Close</button>
-                        <button type='Submit'onSubmit={handleSubmit}>Save</button>
+                   <button type='Submit'>Save</button>
                     </div>
                 </form>
                 {props.children}
