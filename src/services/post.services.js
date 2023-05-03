@@ -3,7 +3,7 @@ import {db} from "../firebase-config"
 import { collection, getDocs, addDoc, updateDoc,doc} from "firebase/firestore"
 
 
-const postCollectiopnRef=collection(db,"posts")
+const postCollectionRef = collection(db, "posts");
 class postDataService{
   addPost = (newPost) => {
   console.log("newPost:", newPost);
