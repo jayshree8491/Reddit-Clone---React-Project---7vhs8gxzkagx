@@ -1,7 +1,7 @@
 
 # Reddit Clone Front-end APP
 
-Reddit Clone is done with top-notch features like Reddit.
+Reddit Clone is done with features like Reddit.
 - It has user interface similar to Reddit. 
 - It has login and logout feature.
 - Add post feature
