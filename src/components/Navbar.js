@@ -11,12 +11,12 @@ function Navbar(props) {
   const navigate = useNavigate();
 
   const addPost = () => {
-    navigate("/addpost");
-  };
+   props.setPostTrigger(true);
+};
 
   const login = () => {
-    navigate("/login");
-  };
+   props.setLoginTrigger(true);
+};
 
   const logout = () => {
     localStorage.removeItem("userName");
