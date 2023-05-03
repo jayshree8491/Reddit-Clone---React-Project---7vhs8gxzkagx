@@ -4,73 +4,76 @@ import postDataService from '../services/post.services'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const PostItem = (props) => {
-  const { id, postText, upVotes, downVotes } = props.post;
-  const { handleUpVote, handleDownVote } = props;
+const PostItem = ({postText,upvote,downvote,userVoted,postId}) => {
+  const user=localStorage.getItem('userName')
+  const [upVote,setUpVote]=useState(upvote)
+  const [downVote,setDownVote]=useState(downvote)
 
-  const [prevUpVote, setPrevUpVote] = useState(upVotes);
-  const [prevDownVote, setPrevDownVote] = useState(downVotes);
-  const [upVote, setUpVote] = useState(upVotes);
-  const [downVote, setDownVote] = useState(downVotes);
-  const [userVoted, setUserVoted] = useState([]);
-  const user = localStorage.getItem('userName');
-
-  const addUpVote = async (e) => {
-    if (user && !userVoted.includes(user)) {
-      setUpVote((prevUpVote) => prevUpVote + 1);
-      setUserVoted((prevUserVoted) => [...prevUserVoted, user]);
-      const updatedPost = {
-        post: postText,
-        upvote: prevUpVote + 1,
-        downvote: downVote,
-        uservoted: [...userVoted, user],
-      };
-      try {
-        await postDataService.updatePost(id, updatedPost);
-      } catch (err) {
-        toast(err.message);
-      }
-    } else if (!user) {
-      toast("Please login 🙏 to Upvote");
+  // console.log(postId)
+  const isLoggedin=()=>{
+    if(localStorage.getItem('userName')){
+      return true;
     }
-  };
-
-  const addDownVote = async (e) => {
-    if (user && !userVoted.includes(user)) {
-      setDownVote((prevDownVote) => prevDownVote + 1);
-      setUserVoted((prevUserVoted) => [...prevUserVoted, user]);
-      const updatedPost = {
-        post: postText,
-        upvote: upVote,
-        downvote: prevDownVote + 1,
-        uservoted: [...userVoted, user],
-      };
-      try {
-        await postDataService.updatePost(id, updatedPost);
-      } catch (err) {
-        toast(err.message);
+    return false;
+  }
+  const addUpVote=async(e)=>{
+    if(isLoggedin() && !userVoted.includes(user)){
+      setUpVote(upVote+1);
+      console.log(upVote+1)
+      userVoted.push(user)
+      const updatedPost={
+        post:postText,
+        upvote:upVote+1,
+        downvote:downVote,
+        uservoted:userVoted
       }
-    } else if (!user) {
-      toast("Please login 🙏 to Downvote");
+      try{
+        await postDataService.updatePost(postId,updatedPost)
+      }catch(err){
+        toast(err.message)
+      }
     }
-  };
+    else if (!isLoggedin()){
+      toast("Please login 🙏 to Upvote")
+    }
+  }
+  const addDownVote=async(e)=>{
+    if(isLoggedin() && !userVoted.includes(user)){
+      setDownVote(downVote+1);
+      userVoted.push(user)
+      const updatedPost={
+        post:postText,
+        upvote:upVote,
+        downvote:downVote+1,
+        uservoted:userVoted
+      }
+      try{
+        await postDataService.updatePost(postId,updatedPost)
+      }catch(err){
+        toast(err.message)
+      }
+    }
+    else if (!isLoggedin()) {
+      toast("Please login 🙏 to Downvote")
+    }
+  }
 
   return (
     <>
-      <div className='postItem-container'>
-        <div className='vote'>
-          <button onClick={addUpVote} className='upvoteBtn'>↑</button>
-          <button onClick={addDownVote} className='downvoteBtn'>↓</button>
-          <div className='voteCount'>{upVote}</div>
-          <div className='voteCount'>{downVote}</div>
-        </div>
-        <div className='postInfo'>
-          <div>{postText}</div>
-        </div>
+    <div className='postItem-container'>
+      <div className='vote'>
+        <button onClick={addUpVote} className='upvoteBtn'>↑</button>
+        <button onClick={addDownVote} className='downvoteBtn'>↓</button>
+        <div className='voteCount'>{upVote}</div>
+        <div className='voteCount'>{downVote}</div>
       </div>
-      <ToastContainer />
+      <div className='postInfo'>
+        <div>{postText}</div>
+      </div>
+    </div>
+    <ToastContainer/>
     </>
-  );
+  )
 }
 
 export default PostItem;
