@@ -73,4 +73,4 @@ const PostItem = (props) => {
   );
 }
 
-export
+export default PostItem;
