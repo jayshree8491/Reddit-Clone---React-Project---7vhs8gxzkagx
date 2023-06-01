@@ -28,7 +28,7 @@ const AddPostPopup = (props) => {
             toast("Post added successfully");
             setPost('');
    //         setShowPopup(false);
-          //  props.setPostTrigger(false);
+            props.setPostTrigger(false);
             navigate('/');
         }catch(err){
             toast(err.message)
