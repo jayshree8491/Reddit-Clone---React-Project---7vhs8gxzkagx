@@ -3,6 +3,7 @@ import postDataService from '../services/post.services'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from 'react-router-dom';
+import {getPosts} from '.Posts';
 
 
 const AddPostPopup = (props) => {
@@ -28,8 +29,9 @@ const AddPostPopup = (props) => {
             toast("Post added successfully");
             setPost('');
    //         setShowPopup(false);
-            props.setPostTrigger(false);
+           // props.setPostTrigger(false);
             navigate('/');
+            getPosts();
         }catch(err){
             toast(err.message)
         }
