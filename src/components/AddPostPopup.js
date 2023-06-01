@@ -50,7 +50,7 @@ const AddPostPopup = (props) => {
                     <input onChange={(e)=>setPost(e.target.value)} className='inputText' type='text' name='post' value={post} />
                     <div className='btns'>
                         <button 
-                        onClick={close}>Close</button>
+                        onClick={()=> props.setPostTrigger(false)}>Close</button>
                         <button type='Submit'>Save</button>
                     </div>
                 </form>
