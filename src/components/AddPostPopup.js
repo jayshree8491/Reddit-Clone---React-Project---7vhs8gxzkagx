@@ -25,14 +25,16 @@ const AddPostPopup = (props) => {
         try{
             await postDataService.addPost(newPost)
             toast("Post added successfully")
+            props.setPostTrigger(false);
+            navigate('/')
         }catch(err){
             toast(err.message)
         }
         setPost("")
     }
-    const close=()=>{
-        props.setPostTrigger(false)
-        navigate('/')
+    //const close=()=>{
+      //  props.setPostTrigger(false)
+        //navigate('/')
     }
 
     return (props.trigger) ? (
@@ -56,6 +58,6 @@ const AddPostPopup = (props) => {
             <ToastContainer />
         </div>
       ) : ""
-}
+//}
 
 export default AddPostPopup;
