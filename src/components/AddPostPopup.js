@@ -24,13 +24,14 @@ const AddPostPopup = (props) => {
         }
         try{
             await postDataService.addPost(newPost)
-            toast("Post added successfully")
+            toast("Post added successfully");
+            setPost('');
             props.setPostTrigger(false);
-            navigate('/')
+            navigate('/');
         }catch(err){
             toast(err.message)
         }
-        setPost("")
+    
     }
     //const close=()=>{
       //  props.setPostTrigger(false)
