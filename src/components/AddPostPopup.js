@@ -8,6 +8,7 @@ import {useNavigate} from 'react-router-dom';
 const AddPostPopup = (props) => {
     const navigate=useNavigate()
     const [post,setPost]=useState("")
+    const [showPopup, setShowPopup]= useState(props.trigger);
     
     const handleSubmit=async (e)=>{
         e.preventDefault()
@@ -21,24 +22,26 @@ const AddPostPopup = (props) => {
             upvote:0,
             downvote:0,
             uservoted:[]
-        }
+        };
         try{
             await postDataService.addPost(newPost)
             toast("Post added successfully");
             setPost('');
-            props.setPostTrigger(false);
+            setShowPopup(false);
+          //  props.setPostTrigger(false);
             //navigate('/');
         }catch(err){
             toast(err.message)
         }
     
     };
-    //const close=()=>{
+    const close=()=>{
+        setShowPopup(false);
       //  props.setPostTrigger(false)
-        //navigate('/')
-    }
+        navigate('/');
+    };
 
-    return (props.trigger) ? (
+    return showPopup ? (
         <div className='addPostPopup'>
             <div className='addPostPopup-inner'>
                 <div className='title'>
@@ -50,7 +53,7 @@ const AddPostPopup = (props) => {
                     <input onChange={(e)=>setPost(e.target.value)} className='inputText' type='text' name='post' value={post} />
                     <div className='btns'>
                         <button 
-                        onClick={()=> props.setPostTrigger(false)}>Close</button>
+                        onClick={close}>Close</button>
                         <button type='Submit'>Save</button>
                     </div>
                 </form>
