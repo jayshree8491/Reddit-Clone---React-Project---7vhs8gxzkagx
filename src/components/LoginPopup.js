@@ -13,7 +13,7 @@ const LoginPopup = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     localStorage.setItem("userName", name)
-    toast("Successfully Logged in!")
+    toast("Login successfull")
     navigate('/')
   }
   return (props.trigger) ? (
@@ -21,8 +21,8 @@ const LoginPopup = (props) => {
       <div className='popup-inner'>
         <form onSubmit={handleSubmit}>
           <h3>Login</h3>
-          <input onChange={(e) => setName(e.target.value)} placeholder='Username' name='name' value={name} required />
-          <input onChange={(e) => setPassword(e.target.value)} placeholder='Password' name='password' type='password' value={password} required />
+          <input type="email" onChange={(e) => setName(e.target.value)} placeholder='Username' name='name' value={name} required />
+          <input type='password' onChange={(e) => setPassword(e.target.value)} placeholder='Password' name='password' value={password} required />
           <div className='btns'>
             <button type='Submit'>Login</button>
             {/* <button>Back</button> */}

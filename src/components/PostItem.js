@@ -9,10 +9,10 @@ const PostItem = ({postText,upvote,downvote,userVoted,postId}) => {
   const [upVote,setUpVote]=useState(upvote)
   const [downVote,setDownVote]=useState(downvote)
 
-
+  // console.log(postId)
   const isLoggedin=()=>{
     if(localStorage.getItem('userName')){
-      return true;
+      return true
     }
     return false;
   }
@@ -76,4 +76,4 @@ const PostItem = ({postText,upvote,downvote,userVoted,postId}) => {
   )
 }
 
-export default PostItem;
+export default PostItem
