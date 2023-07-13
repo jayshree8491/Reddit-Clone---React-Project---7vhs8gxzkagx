@@ -1,13 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase-config';
+import { signOut } from 'firebase/auth';
 import "../stylesheets/logo.css";
-import logo from "./logo.png";
-import SignUpModal from './SignupModal';
-import { auth } from "../firebase-config";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { NavSidebar } from './NavSidebar';
+import logo from './logo.png';
+import React, { useState } from 'react';
+import Header from './Header';
+
 
 const Navbar = (props) => {
   const navigate = useNavigate();
@@ -29,26 +30,35 @@ const Navbar = (props) => {
     navigate('/login');
   };
 
+  const signup = () => {
+    props.setLoginTrigger(true);
+    navigate('/signup');
+  };
+
   const logout = () => {
-    auth.signOut()
+    auth
+      .signOut()
       .then(() => {
         localStorage.removeItem('userName');
-        navigate("/");
+        navigate('/');
       })
       .catch((error) => {
-        console.log("Logout error:", error);
+        console.log('Logout error:', error);
       });
   };
 
   return (
     <>
-      <div className='nav'>
-        <span id='reddit-logo' > <img src={logo} alt="Logo" /></span>
-        <span id='login'>
+      <div className="nav">
+        <span id="reddit-logo">
+          <img src={logo} alt="Logo" />
+        </span>
+        <Header/>
+        <span id="login">
           {isLoggedIn() && <button onClick={addPost}>Add post</button>}
           {!isLoggedIn() && <button onClick={login}>Login</button>}
           {isLoggedIn() && <button onClick={logout}>Logout</button>}
-          <Link to="/signup">Sign Up</Link>
+          <button onClick={signup}>Sign Up</button>
         </span>
       </div>
       <ToastContainer />
