@@ -1,16 +1,15 @@
-import React from 'react';
-import { slide as Menu } from 'react-burger-menu';
-import './NavSidebar.css';
-import logo from './logo.png';
+import React from "react";
+import { slide as Menu } from "react-burger-menu";
+import "./NavSidebar.css";
+import logo from "./logo.png";
 import "../stylesheets/logo.css";
 
-export default props => {
+export default (props) => {
   return (
     <Menu>
-
-<span id="reddit-logo">
-          <img src={logo} alt="Logo" />
-        </span>
+      <span id="reddit-logo">
+        <img src={logo} alt="Logo" />
+      </span>
       <a className="menu-item" href="/">
         Home
       </a>
@@ -23,7 +22,7 @@ export default props => {
       <a className="menu-item" href="/sports">
         Sports
       </a>
-      <a className="menu-item" href="/news">
+      <a className="menu-item" href="/Trending">
         News
       </a>
       <a className="menu-item" href="/celebrity">
