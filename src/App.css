@@ -1,40 +1,59 @@
 /* Example for using IBM Plex Sans and IBM Plex Serif */
 body {
-  font-family: 'IBM Plex Serif', serif;
+  font-family: "IBM Plex Serif", serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'IBM Plex Sans', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "IBM Plex Sans", sans-serif;
 }
 
 /* Example for applying borders, shadows, and spacing */
-.articles {
+.news-feed {
   width: 25%;
   padding: 20px;
   background-color: #f6f6f6;
   /* Add additional styling as needed */
 }
 
-
-.sidebar{
+.sidebar {
   width: 240px;
   line-height: normal; /* Adjust the width as desired */
   background-color: #f6f7f8;
 }
 
-
-  .content {
-    flex: 1;
-    padding: 20px;
-    flex-grow: 1;
+.content {
+  flex: 1;
+  padding: 20px;
+  flex-grow: 1;
 }
 .container {
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
+}
+.reddit-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Example for setting font size and line height */
@@ -43,8 +62,6 @@ p {
   line-height: 1.5;
 }
 
-
-
 .App {
   display: flex;
   flex-direction: column;
@@ -52,10 +69,9 @@ p {
   align-items: center;
 }
 
-.routes{
+.routes {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
