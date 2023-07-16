@@ -17,7 +17,7 @@ Reddit Clone is done with features like Reddit.
 
 ## 🚀 LIVE APP
 
-reddit-clone-by-vivek.netlify.app
+https://4fp4z7-3000.csb.app/
 
 ## SCREENSHOTS FROMS THE APP
 
