@@ -19,6 +19,19 @@ h6 {
   background-color: #f6f6f6;
   /* Add additional styling as needed */
 }
+.news-description {
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.news-title {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
 
 .sidebar {
   width: 240px;

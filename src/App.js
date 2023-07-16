@@ -31,17 +31,19 @@ function App() {
   const [newsFeed, setNewsFeed] = useState([]);
   const [subreddit, setSubreddit] = useState("gaming");
   useEffect(() => {
-    fetch("https://www.reddit.com/r/" + subreddit + ".json").then((res) => {
+    fetch(`https://www.reddit.com/r/${subreddit}.json`)
+    .then((res) => {
       if (res.status !== 200) {
         console.warn("Warning: Something is wrong with the API.");
         return;
       }
-      res.json().then((data) => {
-        if (data != null) {
-          const newsFeedData = data.data.children.map((child) => child.data);
-          setNewsFeed(newsFeedData);
-        }
-      });
+      return res.json();
+    })
+    .then((data) => {
+      if (data && data.data && data.data.children) {
+        const newsFeedData = data.data.children.map((child) => child.data);
+        setNewsFeed(newsFeedData);
+      }
     });
   }, [subreddit]);
 
@@ -104,18 +106,24 @@ function App() {
           </div>
         </div>
         <div className="news-feed">
-        <div className="news-feed-header">
-  <img
-    src="https://cdn.iconscout.com/icon/free/png-256/free-reddit-3771191-3147752.png"
-    alt="Reddit-logo"
-    className="reddit-icon"
-  />
-  <h2 className="news-feed-heading">Reddit News</h2>
-</div>
- {newsFeed != null &&
+          <div className="news-feed-header">
+            <img
+              src="https://cdn.iconscout.com/icon/free/png-256/free-reddit-3771191-3147752.png"
+              alt="Reddit-logo"
+              className="reddit-icon"
+            />
+            <h2 className="news-feed-heading">Reddit News</h2>
+          </div>
+          {newsFeed.length > 0 ? (
             newsFeed.map((newsItem, index) => (
-              <Article key={index} article={newsItem} />
-            ))}
+              <div key={index} className="news-item">
+                <h3 className="news-title">{newsItem.title}</h3>
+                <p className="news-description">{newsItem.selftext}</p>
+              </div>
+            ))
+          ) : (
+            <p>No news feed available.</p>
+          )}
         </div>
       </div>
     </>
